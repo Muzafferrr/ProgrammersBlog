@@ -263,9 +263,11 @@
                 success: function(data) {
                     const userUpdateAjaxModel = jQuery.parseJSON(data);
                     console.log(userUpdateAjaxModel);
+                    let id;
+                    let tableRow;
                     if (userUpdateAjaxModel.UserDto !== null) {
-                        const id = userUpdateAjaxModel.UserDto.User.Id;
-                        const tableRow = $(`[name="${id}"]`);
+                        id = userUpdateAjaxModel.UserDto.User.Id;
+                        tableRow = $(`[name="${id}"]`);
                     }
                     const newFormBody = $('.modal-body', userUpdateAjaxModel.UserUpdatePartial);
                     placeHolderDiv.find('.modal-body').replaceWith(newFormBody);

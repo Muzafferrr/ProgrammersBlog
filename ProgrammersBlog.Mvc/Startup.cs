@@ -11,6 +11,7 @@ using Microsoft.Extensions.Configuration;
 using ProgrammersBlog.Mvc.AutoMapper.Profiles;
 using ProgrammersBlog.Mvc.Helpers.Abstract;
 using ProgrammersBlog.Mvc.Helpers.Concrete;
+using ProgrammersBlog.Entities.Concrete;
 
 namespace ProgrammersBlog.Mvc
 {
@@ -24,6 +25,8 @@ namespace ProgrammersBlog.Mvc
         public IConfiguration Configuration { get; }
         public void ConfigureServices(IServiceCollection services)
         {
+            services.Configure<AboutUsPageInfo>(Configuration.GetSection("AboutUsPageInfo"));
+            services.Configure<WebSiteInfo>(Configuration.GetSection("WebSiteInfo"));
             services.AddControllersWithViews(options =>
             {
                 options.ModelBindingMessageProvider.SetValueMustNotBeNullAccessor(value => "Bu alan boþ geçilmemelidir.");
